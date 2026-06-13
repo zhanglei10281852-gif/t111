@@ -26,7 +26,7 @@ public class MaterialController {
                 || material.getCategory() == null || material.getUnit() == null) {
             return ResponseEntity.badRequest().body(Map.of("error", "物料编码、名称、类别、单位为必填"));
         }
-        if (!materialRepository.existsByMaterialCode(material.getMaterialCode())) {
+        if (materialRepository.existsByMaterialCode(material.getMaterialCode())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", "物料编码已存在"));
         }
         material.setId(null);

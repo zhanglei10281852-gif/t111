@@ -14,7 +14,7 @@ public interface MaterialRepository extends JpaRepository<Material, Long> {
     Page<Material> findByCategory(String category, Pageable pageable);
     Page<Material> findByStatus(String status, Pageable pageable);
 
-    @Query("SELECT m FROM Material m WHERE m.name LIKE :kw OR m.materialCode LIKE :kw")
+    @Query("SELECT m FROM Material m WHERE m.name LIKE CONCAT('%', :kw, '%') OR m.materialCode LIKE CONCAT('%', :kw, '%')")
     Page<Material> search(@Param("kw") String kw, Pageable pageable);
 
     long countByCategory(String category);

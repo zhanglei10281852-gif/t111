@@ -37,7 +37,7 @@ public class SupplierController {
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(required = false) String status,
             @RequestParam(required = false) String category) {
-        PageRequest pr = PageRequest.of(page, size, Sort.by("createTime").descending());
+        PageRequest pr = PageRequest.of(page, size, Sort.by("createdAt").descending());
         Page<Supplier> result;
         if (status != null && !status.isBlank()) {
             result = supplierRepository.findByStatus(status, pr);

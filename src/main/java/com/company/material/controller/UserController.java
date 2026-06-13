@@ -22,7 +22,7 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
 
     private boolean notAdmin(String role) {
-        return "管理员".equals(role);
+        return !"管理员".equals(role);
     }
 
     @GetMapping
